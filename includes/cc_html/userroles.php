@@ -3,7 +3,7 @@
 <h2><i class="icon-userRole-large"></i> User Roles</h2>
 <div class="betaout">
 	<div class="userRoles">
-		<?php 
+		<?php
 			$roleId = isset( $_GET[ 'role' ] ) ? $_GET[ 'role' ] : 0;
 			try{
 				$roles = ccPages::getRoles();
@@ -16,7 +16,7 @@
 			if( $totalRoles == 0 ){
 		?>
 				<div>No record found !</div>
-		<?php 		
+		<?php
 			}else{
 				for( $i=0; $i < $totalRoles; $i++ ){
 		?>

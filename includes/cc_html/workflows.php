@@ -7,7 +7,7 @@
 				<div class="left-panel">
 					<!--<div class="left-panel-heading"></div>-->
 					<div class="left-panel-nav">
-					<?php 
+					<?php
 							$workflowId = isset( $_GET[ 'wid' ] ) ? $_GET[ 'wid' ] : 0;
 							try{
 								$workflows = ccPages::getWorkflows();
@@ -26,7 +26,7 @@
 							if( $totalWorkflows == 0 ){
 					?>
 								<div>No record found !</div>
-					<?php 		
+					<?php
 							}else{
 								for( $i=0; $i < $totalWorkflows; $i++ ){
 									if( $workflowId == 0 ){
@@ -59,7 +59,7 @@
 						<div class="tab-content">
 							<div class="tab-content-header">
 								<b><?php echo $workflowName;?></b> <span class="grey">(<?php echo $totalDesks;?> Desks, <?php echo $totalTemplates;?> Templates)</span>
-								<?php 
+								<?php
 									if(0){
 										echo'<span class="fright"><i class="icon-active"></i> Active</span>';
 									}
@@ -137,8 +137,8 @@
 												<div class="clear"></div>
 												</div>
 											</div>
-										
-							<?php 
+
+							<?php
 										}
 									}
 								}
@@ -146,7 +146,7 @@
 								<div class="clear"></div>
 							</div>
 						</div>
-					</div> 
+					</div>
 				</div>
 			</div>
 		</div>

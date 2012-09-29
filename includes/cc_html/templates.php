@@ -7,7 +7,7 @@
 				<div class="left-panel">
 					<!--<div class="left-panel-heading">Default Desk</div>-->
 					<div class="left-panel-nav">
-						<?php 
+						<?php
 							$templateId = isset( $_GET[ 'tid' ] ) ? $_GET[ 'tid' ] : 0;
 							try{
 								$templates = ccPages::getTemplates();
@@ -20,14 +20,14 @@
 							if( $totalTemplates == 0 ){
 						?>
 								<div>No Template found !</div>
-						<?php 		
+						<?php
 							}else{
 								$templateStatus = '';
 								$templateName = '';
 								$templateDescription = '';
 								$templateBOLink = '';
 								$templateWoLink = '';
-								
+
 								for( $i=0; $i < $totalTemplates; $i++ ){
 									if( $templateId == 0 ){
 										$templateId = $templates[ 0 ][ 'id' ];
@@ -36,7 +36,7 @@
 										$templateDescription = $templates[ 0 ][ 'description' ];
 										$templateBOLink = $clientBOSiteLink . $templates[ 0 ][ 'link' ];
 										$templateWoLink = $clientBOSiteLink . $templates[ 0 ][ 'workflowLink' ];
-										
+
 									}elseif( $templates[ $i ][ 'id' ] == $templateId ){
 										$templateName = $templates[ $i ][ 'name' ];
 										$templateStatus  = $templates[ $i ][ 'status' ];
@@ -60,7 +60,7 @@
 												<?php echo $templates[ $i ][ 'name' ];?>
 											</span>
 										</span>
-									</a>	
+									</a>
 						<?php
 								}
 							}
@@ -75,7 +75,7 @@
 							<div class="tab-content-header">
 								<span><b><?php echo $templateName;?></b></span>
 								<a class="note" href="<?php echo $templateBOLink;?>">To Add or Edit "Story Templates" go to Newsroom</a>
-								<?php 
+								<?php
 									if($templateStatus == "active"){
 										echo'<span class="fright"><i class="icon-active"></i> Active</span>';
 									}elseif($templateStatus == "inactive"){
@@ -89,7 +89,7 @@
 							<div class="tab-content-body">
 								<div class="heading">Associated With Workflow</div>
 								<!--<a class="heading" href="<?php echo $templateWoLink; ?>">Associated With Workflow</a>
-							--><?php 
+							--><?php
 								try{
 									$workflows = ccPages::getTemplateWorkflows( $templateId );
 								}catch ( Exception $ex ){
@@ -100,7 +100,7 @@
 								if( $totalWorkflows == 0 ){
 							?>
 									<div>No record found !</div>
-							<?php 		
+							<?php
 								}else{
 							?>
 									<!-- <h3>Associated with <?php //echo $totalWorkflows;?> Workflow</h3> -->
@@ -109,19 +109,19 @@
 									for( $i=0; $i < $totalWorkflows; $i++ ){
 							?>
 										<li><a href="<?php echo $templateWoLink; ?>"><?php echo $workflows[ $i ][ 'name' ];?></a></li>
-							<?php 
+							<?php
 									}
 								}
 								?>
 								</ol>
-								
+
 							<div class="description">
 								<h2 class="heading">Template Description</h2>
 								<div class="content"><?php echo $templateDescription;?></div>
 							</div>
 							</div>
 						</div>
-					</div> 
+					</div>
 				</div>
 			</div>
 		</div>
