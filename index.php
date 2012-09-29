@@ -30,7 +30,11 @@ include_once 'includes/UserDataManagement.php';
 include_once 'includes/betaout_rpc.php';
 include_once 'includes/wpcontentcloud.php';
 
+defined('ACCESS_API_URL')
+        || define('ACCESS_API_URL', 'http://access.betaout.com/api/');
 
+defined('PERSONA_API_URL')
+        || define('PERSONA_API_URL', 'http://persona.to/clientapi/');
 //------------------------------------------------------------------------------
 //the plugin will work function if cURL and add_function exist and the appropriate version of PHP is available.
 $adminErrorMessage = "";
@@ -61,14 +65,14 @@ if (function_exists('add_action') && function_exists('add_filter')) {
                 try {
                     setcookie("personasessionid", $personaSessionId, time() + 60 * 60 * 24 * 30, '/');
                 } catch (Exception $e) {
-                    
+
                 }
             }
             add_action('admin_menu', 'socialAxis_plugin::socialAxisPluginMenu');
 //            add_action('publish_post', 'socialAxis_plugin::post_myfunction');
         }
     } catch (Exception $ex) {
-        
+
     }
 }
 
