@@ -17,6 +17,7 @@ echo $wpSiteSecret;
 echo "<br/>"; */
 
 include_once 'cc_pages.php';
+include_once 'contentcloud.php';
 
 if( !$wpSiteKey || !$wpSiteSecret )
 {
@@ -28,7 +29,5 @@ if( !$wpSiteKey || !$wpSiteSecret )
 	//add_action( 'admin_notices', 'getInvalidApiSecretMessage' );
 	return;
 }
-
-include_once 'contentcloud.php';
 
 ContentCloud::validateSite( $wpSiteKey, $wpSiteSecret );

@@ -29,6 +29,7 @@ class ContentCloud{
 					add_action( 'save_post', 'ContentCloud::publishPost' );
 					add_action( 'create_category', 'ContentCloud::pushCategory' );
 					add_action( 'edit_category', 'ContentCloud::pushCategory' );
+					add_action( 'delete_category', 'ContentCloud::deleteCategory' );
 				}
 			}
 		}
@@ -39,7 +40,7 @@ class ContentCloud{
 		add_filter( 'the_content', array( 'BOGallery', 'processGallery' ) );
 	}
 
-	public static function importWpData()
+	private static function pushAllWpCategories()
 	{
 		//get all existing categories and sync with betaout
 		$wpCategories = array();
@@ -48,15 +49,21 @@ class ContentCloud{
 		foreach($categories as $category)
 		{
 			$wpCategories[$i] = array( 'parentId'=>$category->category_parent, 'categoryName'=>$category->cat_name,
-				'categorySlug'=>$category->slug, 'categoryDescription'=>$category->category_description, 'wpCategoryId'=>$category->cat_ID );
+					'categorySlug'=>$category->slug, 'categoryDescription'=>$category->category_description, 'wpCategoryId'=>$category->cat_ID );
 			$wpParentId[$i] = $category->category_parent;
 			$wpCategoryId[$i] = $category->cat_ID;
 			$i++;
 		}
 		array_multisort( $wpParentId, SORT_ASC, $wpCategoryId, SORT_ASC, $wpCategories);
-
+		
 		$data = array( 'siteKey' => self::$wpSiteKey, 'action' => 'category', 'wpCategories' => $wpCategories );
 		$result = self::curlRequest( self::$contentCloudApiUrl, $data );
+	}
+	
+	public static function importWpData()
+	{
+		self::pushAllWpCategories();
+		
 		$arrStories = array();
 		
 		//get all today published posts and sync with betaout
@@ -142,7 +149,7 @@ class ContentCloud{
 		
 		$wpCategories = array();
 		$categories = array();
-		$currentCategory = get_category( $categoryId ); 
+		$currentCategory = get_category( $categoryId );
 		$categories[] = $currentCategory;
 		while( $currentCategory->category_parent > 0 ) {
 			$currentCategory = get_category( $currentCategory->category_parent );
@@ -160,7 +167,15 @@ class ContentCloud{
 		$data = array( 'siteKey' => self::$wpSiteKey, 'action' => 'category', 'wpCategories' => $wpCategories );
 		$result = self::curlRequest( self::$contentCloudApiUrl, $data );
 	}
-
+	
+	
+	public static function deleteCategory( $wpCategoryId ){
+		$data = array( 'siteKey' => self::$wpSiteKey, 'action' => 'delete-category', 'wpCategoryId' => $wpCategoryId );
+		$result = self::curlRequest( self::$contentCloudApiUrl, $data );
+		
+		self::pushAllWpCategories();
+	}
+	
 	public static function publishPost( $wpId ){
 		
 		if ( !wp_is_post_revision( $wpId ) ) {
@@ -256,11 +271,14 @@ class ContentCloud{
 		$data = array();
 		if( $post_id )
 		{
+			clean_post_cache( $post_id );
 			$getPost = get_post( $post_id );
+			$categories = wp_get_post_categories( $post_id );
 			
 			$data = array(
 					'wpId' => $post_id,
 					'storySlug' => $getPost->post_name,
+					'categories' => $categories,
 					'storyPermalink' => get_permalink( $post_id )
 			);
 		}
@@ -269,6 +287,10 @@ class ContentCloud{
 	
 	public static function deleteBoPost( $wpId ) {
 		wp_trash_post($wpId);
+	}
+	
+	public static function deleteBoCategory( $wpCategoryId ) {
+		$result = wp_delete_category( $wpCategoryId );
 	}
 	
 	public static function getHash( $postArray ) {

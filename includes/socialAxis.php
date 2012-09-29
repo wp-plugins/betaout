@@ -33,7 +33,7 @@ class socialAxis_plugin {
                 if (!empty($betaoutApiKey) && !empty($betaoutApiSecret)) {
                     $parameters = array('wordpressVersion' => $wordpressVersion, 'wordpressBoPluginUrl' => $wordpressBoPluginUrl);
                     try {
-                        $IPPHPSDKObj = new IPPHPSDK($betaoutApiKey, $betaoutApiSecret, "http://access.betaout.com/api/");
+                        $IPPHPSDKObj = new IPPHPSDK($betaoutApiKey, $betaoutApiSecret, ACCESS_API_URL);
                         $curlResponse = $IPPHPSDKObj->validatePublication($parameters);
                     } catch (Exception $ex) {
                         $curlResponse = '{ "error": "' . $ex->getMessage() . '", "responseCode": 500 }';

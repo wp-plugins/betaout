@@ -220,7 +220,7 @@ class SocialAxis_UserDataManagement {
         	
         	$betaoutApiKey = get_option("_BETAOUT_API_KEY");
             $betaoutApiSecret = get_option("_BETAOUT_API_SECRET");
-            $IPPHPSDKObj = new IPPHPSDK($betaoutApiKey, $betaoutApiSecret, "http://access.betaout.com/api/");
+            $IPPHPSDKObj = new IPPHPSDK($betaoutApiKey, $betaoutApiSecret, ACCESS_API_URL);
             $IPPHPSDKObj->deactivateBOPlugin();
         } catch (Exception $ex) {
             
@@ -235,7 +235,7 @@ class SocialAxis_UserDataManagement {
         try {
             $betaoutApiKey = get_option("_BETAOUT_API_KEY");
             $betaoutApiSecret = get_option("_BETAOUT_API_SECRET");
-            $IPPHPSDKObj = new IPPHPSDK($betaoutApiKey, $betaoutApiSecret, "http://access.betaout.com/api/");
+            $IPPHPSDKObj = new IPPHPSDK($betaoutApiKey, $betaoutApiSecret, ACCESS_API_URL);
             $response = $IPPHPSDKObj->uninstallBOPlugin();
             $curlResponse = json_decode($response, true);
             if (isset($curlResponse['responseCode']) && $curlResponse['responseCode'] == 200) {
@@ -258,7 +258,7 @@ class SocialAxis_UserDataManagement {
             $socialAxisKey = get_option("_BETAOUT_API_KEY");
             $socialAxisSecret = get_option("_BETAOUT_API_SECRET");
             $parameters = array('userId' => $personaUserId);
-            $IPPHPSDKObj = new IPPHPSDK($socialAxisKey, $socialAxisSecret, "http://persona.to/clientapi/");
+            $IPPHPSDKObj = new IPPHPSDK($socialAxisKey, $socialAxisSecret, PERSONA_API_URL);
             $userProfile = $IPPHPSDKObj->getUserProfile($parameters);
             $userProfile = json_decode($userProfile, true);
             if (isset($userProfile['responseCode']) && $userProfile['responseCode'] == 200) {
@@ -322,7 +322,7 @@ class SocialAxis_UserDataManagement {
             update_option("_BETAOUT_API_SECRET_TEMP", $betaoutApiSecret);
             self::addCustomUserRoles();
             try {
-                $IPPHPSDKObj = new IPPHPSDK($betaoutApiKey, $betaoutApiSecret, "http://access.betaout.com/api/");
+                $IPPHPSDKObj = new IPPHPSDK($betaoutApiKey, $betaoutApiSecret, ACCESS_API_URL);
                 $curlResponse = $IPPHPSDKObj->validatePublication($parameters);
             } catch (Exception $ex) {
                 $curlResponse = '{ "error": "' . $ex->getMessage() . '", "responseCode": 500 }';
