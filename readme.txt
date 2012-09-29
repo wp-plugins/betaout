@@ -15,7 +15,9 @@ Content Cloud empowers your newsroom with dynamic workflows, resource sharing, o
 
 Its plug-n-play architecture gives you the flexibility to take out the Betaout platform from your network anytime without disrupting your publishing process.
 
-For more info, please go to our website - http://www.betaout.com 
+For more info, please go to our website - http://www.betaout.com
+
+ Fully Functional Demo - http://www.betaout.com/demo/
 
 == Installation ==
 
@@ -33,7 +35,7 @@ If the automatic process above fails, follow these simple steps to do a manual i
 2. **Team Activity** - An activity stream of all the activity happening in your newsroom.
 3. **Team Profile** - Powerful team member profile to give all relevant information on a single page.
 4. **Asset Uploader** - Upload multiple images, videos to your story with ease.
-5. **User Profile** - Give your users including team members, site subscribers etc a personal dashboard, to monitor their progress, badges, rewards across your network. 
+5. **User Profile** - Give your users including team members, site subscribers etc a personal dashboard, to monitor their progress, badges, rewards across your network.
 
 == Frequently Asked Questions ==
 
@@ -43,7 +45,7 @@ Though our interface is very intuitive but we have written a User Manual, just i
 
 = I have an query, where do I ask? =
 
-You can email us all your queries at support@betaout.com. 
+You can email us all your queries at support@betaout.com.
 
 
 == Changelog ==
