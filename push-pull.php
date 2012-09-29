@@ -21,7 +21,7 @@ $code = 200;
 $data = array();
 
 if( $pluginActiveStatus ){
-	
+
 	$postArray = $_POST;
 	$postHash = $postArray[ 'hash' ];
 	unset( $postArray[ 'hash' ] );
@@ -42,10 +42,15 @@ if( $pluginActiveStatus ){
 			$wpPost = $postArray['wpPost'];
 			$data = ContentCloud::moveBoPost( $wpPost );
 			break;
-		} 
+		}
 		case 'delete-post' :{
 			$wpId = $postArray['wpId'];
 			$data = ContentCloud::deleteBoPost( $wpId );
+			break;
+		}
+		case 'delete-category' :{
+			$wpCategoryId = $postArray['wpCategoryId'];
+			$data = ContentCloud::deleteBoCategory( $wpCategoryId );
 			break;
 		}
 		default : {
