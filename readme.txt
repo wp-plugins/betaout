@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: Betaout
+Contributors: Betaout-contentcloud
 Tags: newsroom, workflow, freelancers, editorial calendar, user roles, social, user registration, editflow, story budget, multiple sites
 Requires at least: 3.1
 Tested up to: 3.4.2
