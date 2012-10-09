@@ -7,7 +7,7 @@
 				<div class="left-panel">
 					<!--<div class="left-panel-heading"></div>-->
 					<div class="left-panel-nav">
-						<?php
+						<?php 
 							$deskId = isset( $_GET[ 'desk' ] ) ? $_GET[ 'desk' ] : 0;
 							$userRoleName = '';
 							$deskEditLink = '';
@@ -24,7 +24,7 @@
 							if( $totalDesks == 0 ){
 						?>
 								<div>No record found !</div>
-						<?php
+						<?php 		
 							}else{
 								for( $i=0; $i < $totalDesks; $i++ ){
 									if( $deskId == 0 ){
@@ -40,7 +40,7 @@
 										$deskName = $desks[ $i ][ 'name' ];
 									}
 						?>
-									<a class="<?php echo $desks[ $i ][ 'id' ] == $deskId ? 'active' : '';?>" href="<?php echo "/wp-admin/admin.php?page=desks&desk=" . $desks[ $i ][ 'id' ];?>"><?php echo $desks[ $i ][ 'name' ];?></a>
+									<a class="<?php echo $desks[ $i ][ 'id' ] == $deskId ? 'active' : '';?>" href="<?php echo "/wp-admin/admin.php?page=desks&desk=" . $desks[ $i ][ 'id' ];?>"><?php echo $desks[ $i ][ 'name' ];?></a>	
 						<?php
 								}
 							}
@@ -59,7 +59,7 @@
 								<div class="clear"></div>
 							</div>
 							<div class="tab-content-body desk-users">
-
+							
 								<?php
 									try{
 										$users = ccPages::getDeskUsers( $deskId, 1000 );
@@ -71,7 +71,7 @@
 									if( $totalUsers == 0 ){
 								?>
 										<div>No user record found !</div>
-								<?php
+								<?php 		
 									}else{
 										for( $i=0; $i < $totalUsers; $i++ ){
 								?>
@@ -79,13 +79,13 @@
 											<a href="<?php echo $users[ $i ][ 'link' ] ?>" class="desk-user"><img src="<?php echo $users[ $i ][ 'image' ] ?>"></img></a><br/>
 											<a href="<?php echo $users[ $i ][ 'link' ] ?>" class="desk-username"><?php echo $users[ $i ][ 'name' ] ?></a>
 										</div>
-								<?php
+								<?php 
 										}
 									}
 								?>
 							</div>
 						</div>
-					</div>
+					</div> 
 				</div>
 			</div>
 		</div>
