@@ -18,7 +18,7 @@ if (isset($_POST['betaoutSubmit'])) {
         else
             $showError = true;
     } catch (Exception $ex) {
-
+        
     }
 }
 ?>
@@ -40,7 +40,7 @@ if (isset($_POST['betaoutSubmit'])) {
     if ($showError) {
         ?>
         <div style="min-height:25px;background-color:#f2dede;margin-left:30px;padding-top:5px;text-align: center;width:315px;-moz-border-radius:10px;border-radius:10px;" id="errorDiv">
-            <img id="errorDivImage" style="float:right;margin-right:3px;margin-top: -1px;cursor:pointer;" src="<?php echo plugins_url('images/closeIcon.png', dirname(dirname(__FILE__))); ?>"/>
+            <img id="errorDivImage" style="float:right;margin-right:3px;margin-top: -1px;cursor:pointer;" src="<?php echo plugins_url('images/closeIcon.png', dirname(dirname(__FILE__))); ?>"/> 
             <span style="font-family: Arial;color:#b94a48;"><?php echo $curlResponse['error']; ?></span>
         </div>
         <?php
