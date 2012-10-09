@@ -75,7 +75,7 @@ if (function_exists('add_action') && function_exists('add_filter')) {
         
     }
 }
-SocialAxis_UserDataManagement::checkIfWpSync();
+//SocialAxis_UserDataManagement::checkIfWpSync();
 //add_filter('template_redirect', 'SocialAxis_UserDataManagement::betaout_rpc');
 register_activation_hook(__FILE__, 'SocialAxis_UserDataManagement::myplugin_activate');
 register_deactivation_hook(__FILE__, 'SocialAxis_UserDataManagement::myplugin_deactivate');
