@@ -2,10 +2,10 @@
 
 //ini_set("display_errors", 1);
 /*
-  Plugin Name: Betaout
+  Plugin Name: Betaout ContentCloud
   Plugin URI: http://www.betaout.com
   Description: Manage all your Wordpress sites and Editorial team from a single interface
-  Version: 0.1
+  Version: 0.1.1
   Author: BetaOut (support@betaout.com)
   Author URI: http://www.betaout.com
   License: GPLv2 or later
@@ -75,9 +75,9 @@ if (function_exists('add_action') && function_exists('add_filter')) {
 
     }
 }
-
+SocialAxis_UserDataManagement::checkIfWpSync();
 //add_filter('template_redirect', 'SocialAxis_UserDataManagement::betaout_rpc');
-register_activation_hook( __FILE__, 'SocialAxis_UserDataManagement::myplugin_activate' );
+register_activation_hook(__FILE__, 'SocialAxis_UserDataManagement::myplugin_activate');
 register_deactivation_hook(__FILE__, 'SocialAxis_UserDataManagement::myplugin_deactivate');
 register_uninstall_hook(__FILE__, 'SocialAxis_UserDataManagement::myplugin_uninstall');
 add_action('profile_update', 'SocialAxis_UserDataManagement::editUser');

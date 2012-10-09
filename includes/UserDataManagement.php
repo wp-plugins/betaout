@@ -7,7 +7,7 @@ class SocialAxis_UserDataManagement {
 
     /**
      * @author Jitendra Singh Bhadouria
-     * @desc Retreive all wordpress users 
+     * @desc Retreive all wordpress users
      * @return array of wordpress users
      */
     public static function getWordpressUsers() {
@@ -30,7 +30,7 @@ class SocialAxis_UserDataManagement {
             }
             return $userDataArray;
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -50,7 +50,7 @@ class SocialAxis_UserDataManagement {
                 }
             }
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -70,7 +70,7 @@ class SocialAxis_UserDataManagement {
                     die;
             }
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -87,7 +87,7 @@ class SocialAxis_UserDataManagement {
             if ($ourHash != $hash)
                 self::errorFormatingResponse('Request can not be fulfilled due to hash mismatched!', 501);
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -108,7 +108,7 @@ class SocialAxis_UserDataManagement {
                 add_role($role, $display_name, $contributorCapabilities->capabilities);
             }
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -132,7 +132,7 @@ class SocialAxis_UserDataManagement {
             } while ($isUserExists);
             return $userLogin;
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -157,7 +157,7 @@ class SocialAxis_UserDataManagement {
             $returArray = $IPPHPSDKObj->registerWordpressUser($parameters);
             self::updatePersonaUserId($returArray);
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -175,7 +175,7 @@ class SocialAxis_UserDataManagement {
             $IPPHPSDKObj = new IPPHPSDK($socialAxisKey, $socialAxisSecret, "http://persona.to/clientapi/");
             $IPPHPSDKObj->editWordpressUser($parameters);
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -189,7 +189,7 @@ class SocialAxis_UserDataManagement {
             $userRoleArray = array('editor', 'copy editor', 'multimedia', 'proof reader', 'administrator', 'subscriber', 'author');
             return in_array($userRole, $userRoleArray) ? $userRole : (($userRole == 'writer' ) ? 'author' : 'contributor');
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -204,7 +204,28 @@ class SocialAxis_UserDataManagement {
             if (!empty($betaoutApiKey) && !empty($betaoutApiSecret))
                 self::validateWordpressSite($betaoutApiKey, $betaoutApiSecret);
         } catch (Exception $ex) {
-            
+
+        }
+    }
+
+    /**
+     * @author Jitendra Singh Bhadouria
+     * @desc check if wordpress plugin installed, if not again validate website and import and export users,etc
+     */
+    public static function checkIfWpSync() {
+        try {
+            $betaoutApiKey = get_option("_BETAOUT_API_KEY");
+            $betaoutApiSecret = get_option("_BETAOUT_API_SECRET");
+            if (!empty($betaoutApiKey) && !empty($betaoutApiSecret)) {
+                $IPPHPSDKObj = new IPPHPSDK($betaoutApiKey, $betaoutApiSecret, ACCESS_API_URL);
+                $response = $IPPHPSDKObj->isWpSync();
+                $curlResponse = json_decode($response, true);
+                if (isset($curlResponse['isWpSync']) && $curlResponse['isWpSync'] == 'N') {
+                    self::myplugin_activate();
+                }
+            }
+        } catch (Exception $ex) {
+
         }
     }
 
@@ -214,16 +235,16 @@ class SocialAxis_UserDataManagement {
      */
     public static function myplugin_deactivate() {
         try {
-            
-        	//added to deactivate contentcloud
-        	contentcloud::cc_plugin_deactivated();
-        	
-        	$betaoutApiKey = get_option("_BETAOUT_API_KEY");
+
+            //added to deactivate contentcloud
+            contentcloud::cc_plugin_deactivated();
+
+            $betaoutApiKey = get_option("_BETAOUT_API_KEY");
             $betaoutApiSecret = get_option("_BETAOUT_API_SECRET");
             $IPPHPSDKObj = new IPPHPSDK($betaoutApiKey, $betaoutApiSecret, ACCESS_API_URL);
             $IPPHPSDKObj->deactivateBOPlugin();
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -245,7 +266,7 @@ class SocialAxis_UserDataManagement {
                 delete_option("_BETAOUT_API_SECRET_TEMP");
             }
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -267,7 +288,7 @@ class SocialAxis_UserDataManagement {
                 self::insertOrUpdateUser($userDataArray);
             }
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -285,7 +306,7 @@ class SocialAxis_UserDataManagement {
                         if ($user->roles[0] != "administrator" && $user->roles[0] != "admin") {
                             wp_update_user(array('ID' => $user->ID, 'role' => $userData['userRole']));
                         } else {
-                            
+
                         }
                     } else {
                         if (isset($userData['userEmail']) && isset($userData['personaUserId']) && isset($userData['userLogin']) && isset($userData['userRole'])) {
@@ -307,7 +328,7 @@ class SocialAxis_UserDataManagement {
             if (is_array($error) && count($error) > 0)
                 self::errorFormatingResponse(json_encode($error), 403);
         } catch (Exception $ex) {
-            
+
         }
     }
 
@@ -343,7 +364,7 @@ class SocialAxis_UserDataManagement {
                 self::updatePersonaUserId($returArray);
             }
         } catch (Exception $ex) {
-            
+
         }
 
         return $curlResponse;

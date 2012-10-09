@@ -48,7 +48,8 @@ abstract class IPPHPSDKBase {
         'sendPersonaUserToWordpress' => 'xmlrpc.php',
         'deactivateBOPlugin' => 'publicationadmin/deactivateboplugin/',
         'uninstallBOPlugin' => 'publicationadmin/uninstallboplugin/',
-        'sendPreviousUser'=>'publication/sendprevioususer/'
+        'sendPreviousUser' => 'publication/sendprevioususer/',
+        'isWpSync' => 'publicationadmin/iswpsync/'
     );
 
     public function __construct($apiKey, $apiSecret, $publicationUrl) {

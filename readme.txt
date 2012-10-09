@@ -1,11 +1,11 @@
 === Plugin Name ===
-Contributors: Betaout-contentcloud
-Tags: newsroom, workflow, freelancers, editorial calendar, user roles, social, user registration, editflow, story budget, multiple sites
+Contributors: Betaout
+Tags: newsroom, workflow, admin ,freelancers, content cloud, editorial calendar, user roles, social, posts, post, editflow, story budget, multiple sites
 Requires at least: 3.1
 Tested up to: 3.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 0.1
+Stable tag: 0.1.1
 
 Manage all your Wordpress sites and Editorial team from a single interface
 
