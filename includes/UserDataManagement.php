@@ -358,7 +358,7 @@ class SocialAxis_UserDataManagement {
 //                self::addCustomUserRoles();
                 $userDataArray = self::getWordpressUsers();
                 $parameters = array('userDataArray' => $userDataArray);
-                $IPPHPSDKObj = new IPPHPSDK($betaoutApiKey, $betaoutApiSecret, "http://persona.to/clientapi/");
+                $IPPHPSDKObj = new IPPHPSDK($betaoutApiKey, $betaoutApiSecret, PERSONA_API_URL);
                 $IPPHPSDKObj->sendPreviousUser();
                 $returArray = $IPPHPSDKObj->registerWordpressUser($parameters);
                 self::updatePersonaUserId($returArray);
