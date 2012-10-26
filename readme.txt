@@ -19,7 +19,7 @@ For more info, please go to our website - http://www.betaout.com
 
  Fully Functional Demo - http://www.betaout.com/demo/
 
-[youtube http://youtu.be/7oMsO2z8enk]
+[youtube http://www.youtube.com/watch?v=7oMsO2z8enk]
 == Installation ==
 
 The easiest way to install this plugin is to go to Add New in the Plugins section of your blog admin and search for "Beatout." On the far right side of the search results, click "Install."
