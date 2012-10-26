@@ -19,7 +19,7 @@ For more info, please go to our website - http://www.betaout.com
 
  Fully Functional Demo - http://www.betaout.com/demo/
 
-[youtube http://youtu.be/7oMsO2z8enk]
+[youtube http://www.youtube.com/watch?v=7oMsO2z8enk]
 
 == Installation ==
 
