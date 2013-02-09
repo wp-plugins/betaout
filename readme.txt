@@ -23,7 +23,7 @@ For more info, please go to our website - http://www.betaout.com
 
 == Installation ==
 
-The easiest way to install this plugin is to go to Add New in the Plugins section of your blog admin and search for "Beatout." On the far right side of the search results, click "Install."
+The easiest way to install this plugin is to go to Add New in the Plugins section of your blog admin and search for "Betaout." On the far right side of the search results, click "Install."
 
 If the automatic process above fails, follow these simple steps to do a manual install:
 
