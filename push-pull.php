@@ -1,4 +1,7 @@
 <?php
+
+$postArray = $_POST;
+
 $current_path = dirname(__FILE__);
 $wp_load = $current_path . "/wp-load.php";
 
@@ -21,8 +24,7 @@ $code = 200;
 $data = array();
 
 if( $pluginActiveStatus ){
-
-	$postArray = $_POST;
+	
 	$postHash = $postArray[ 'hash' ];
 	unset( $postArray[ 'hash' ] );
 
@@ -35,22 +37,23 @@ if( $pluginActiveStatus ){
 	switch( $postArray[ 'action' ] ) {
 		case 'category' :{
 			$wpCategories = $postArray['wpCategories'];
-			$data = ContentCloud::moveBoCategory( $wpCategories );
+			$data = WpPull::moveBoCategory( $wpCategories );
 			break;
 		}
 		case 'post' :{
 			$wpPost = $postArray['wpPost'];
-			$data = ContentCloud::moveBoPost( $wpPost );
+			$structuredPostData = $postArray['structuredPostData'];
+			$data = WpPull::moveBoPost( $wpPost, $structuredPostData );
 			break;
-		}
+		} 
 		case 'delete-post' :{
 			$wpId = $postArray['wpId'];
-			$data = ContentCloud::deleteBoPost( $wpId );
+			$data = WpPull::deleteBoPost( $wpId );
 			break;
 		}
 		case 'delete-category' :{
 			$wpCategoryId = $postArray['wpCategoryId'];
-			$data = ContentCloud::deleteBoCategory( $wpCategoryId );
+			$data = WpPull::deleteBoCategory( $wpCategoryId );
 			break;
 		}
 		default : {
