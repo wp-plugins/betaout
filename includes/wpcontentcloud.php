@@ -18,6 +18,7 @@ echo "<br/>"; */
 
 include_once 'cc_pages.php';
 include_once 'contentcloud.php';
+include_once 'wpPull.php';
 
 if( !$wpSiteKey || !$wpSiteSecret )
 {
