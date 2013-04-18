@@ -1,0 +1,113 @@
+/* style.css for betaout */
+
+.hide{display:none;}
+.fright{float:right;}
+.fleft{float:left;}
+
+/* grids, grids(fluid), table:row-column(custom) */
+.row{*zoom:1;display:table;width:100%;}
+.row .column{display:table-cell;vertical-align:top;float:none;}
+.row .column.align-middle{vertical-align:middle;}
+*html .row .column{float:left;padding:0;border:0;margin:0;} /* IE5, IE6 */
+*+html .row .column{float:left;padding:0;border:0;margin:0;} /* IE7 */
+
+/* icons */
+[class^="icon-"],[class*=" icon-"]{display:inline-block;margin-right:3px;width:14px;height:14px;line-height:14px;vertical-align:text-top;background:url("betaout-sprite.png") no-repeat center center;*margin-right:.3em;}[class^="icon-"]:last-child,[class*=" icon-"]:last-child{*margin-left:0;}
+:hover > [class^="icon-"],:hover > [class*=" icon-"]{opacity:0.5;}
+.icon-arrow-right{position:absolute;right:-50px;bottom:120px;background-position:-38px -5px;width:35px;height:25px;}
+.icon-arrow-bottom{position:absolute;left:100px;bottom:-45px;background-position:-20px -32px;width:24px;height:31px;}
+.icon-betaout{background-position:-157px -4px;width:25px;height:15px;}
+.icon-workflow{background-position:-96px -5px;width:16px;height:16px;float:left;margin-top:1px}
+.icon-desk{background-position:-124px -7px;width:18px;height:12px;float:left;margin-top:3px}
+.icon-template{background-position:-96px -5px;width:16px;height:16px;float:left;margin-top:1px}
+.icon-workbench{background-position:-268px -6px;width:12px;height:11px;float:left;margin-top:1px}
+.icon-persona{background-position:-243px -3px;width:12px;height:11px;float:left;margin-top:1px}
+.icon-setting{background-position:-241px -26px;width:15px;height:16px;float:left;margin-top:1px}
+.icon-workflow-large{background-position:-15px -78px;width:28px;height:28px;margin-top:-5px}
+.icon-desk-large{background-position:-188px -90px;width:29px;height:19px;}
+.icon-template-large{background-position:-141px -85px;width:29px;height:29px;margin-top:-5px}
+.icon-userRole-large{background-position:-62px -80px;width:23px;height:39px;margin-top:-10px;}
+.icon-persona-large{background-position:-103px -87px;width:23px;height:22px;margin-top:-5px}
+.icon-more{background-position:-6px -5px;width:16px;height:10px;float:left;}
+.icon-active{background-position:-156px -54px;width:14px;height:14px;margin-top:1px;}
+.icon-not-active{background-position:-196px -54px;width:14px;height:14px;margin-top:1px;}
+.icon-draft{background-position:-176px -54px;width:14px;height:14px;margin-top:1px;}
+/* betaout CSS */
+.betaout{border:1px solid #cae6ff;margin-top:5px;margin-right:15px;}
+.betaout .left-panel-column{border-right:1px solid #cae6ff;width:185px;min-height:400px;}
+.betaout .left-panel-column .left-panel .left-panel-heading{font-size:18px;padding:25px 20px;}
+.betaout .left-panel-column .left-panel .left-panel-heading .left-panel-nav{}
+.betaout .left-panel-column .left-panel .left-panel-nav{margin-top:35px;}
+.betaout .left-panel-column .left-panel .left-panel-nav a{display:block;font-weight:bold;text-decoration:none;text-transform:capitalize;font-size:13px;text-align:left;line-height:1.2;color:#333333;padding:10px;border-bottom:1px solid #ffffff;}
+.betaout .left-panel-column .left-panel .left-panel-nav a:hover,.betaout .left-panel-column .left-panel .left-panel-nav a.active{background:#eff8ff;}
+
+/* tab-nav */
+.tab-nav{}
+.tab-nav .tab-options{height:28px;}
+.note{font-style:italic;position:absolute;font-size:11px;right:0px;top:-20px}
+.note a{line-height:1;font-weight:bold;}
+.tab-nav .tab-options .note a:hover{text-decoration:underline;background:transparent}
+.tab-nav .tab-options a{display:inline-block;text-decoration:none;color:#777777;cont-size:14px;border:1px solid #d1e5ee;border-bottom:0;background:#f5fafd;padding:5px 15px;
+  border-radius:4px 4px 0 0;-moz-border-radius:4px 4px 0 0;-webkit-border-radius:4px 4px 0 0;-khtml-border-radius:4px 4px 0 0;-o-border-radius:4px 4px 0 0;position:relative;z-index:0;
+}
+.tab-nav .tab-options a:first-child{margin-left:20px}
+.tab-nav .tab-options a:hover,.tab-nav .tab-options a.active{
+  background:#eff8ff;color:333333;border-color:#d1e5ee;position:relative;z-index:1;
+}
+.tab-nav .tab-content{}
+.tab-nav .tab-content .tab-content-header{
+  border:1px solid #cccccc;padding:8px 20px;color:#0f1010;font-size:14px;position:relative;z-index:0;
+  background:#eff8ff;margin-top:0px;
+  background: linear-gradient(top, #eff8ff 0%,#dfebf4 50%,#d0dfe9 100%); /* W3C */
+  background: -moz-linear-gradient(top, #eff8ff 0%,#dfebf4 50%,#d0dfe9 100%); /* FF3.6+ */
+  background: -webkit-linear-gradient(top, #eff8ff 0%,#dfebf4 50%,#d0dfe9 100%); /* Chrome10+,Safari5.1+ */
+  background: -ms-linear-gradient(top, #eff8ff 0%,#dfebf4 50%,#d0dfe9 100%); /* IE10+ */
+  background: -o-linear-gradient(top, #eff8ff 0%,#dfebf4 50%,#d0dfe9 100%); /* Opera 11.10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eff8ff', endColorstr='#d0dfe9',GradientType=0 ); /* IE6-9 */
+}
+.tab-nav .tab-content .tab-content-header .grey{color:#777777;}
+.tab-nav .tab-content .tab-content-body{padding:20px;}
+.tab-nav .tab-content .tab-content-body .desk{border:1px solid #d0dfe9;float:left;width:225px;height:300px;background:#f3fafe;position:relative;margin-right:50px;margin-bottom:50px;
+  border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;-khtml-border-radius:4px;-o-border-radius:4px;
+}
+.tab-nav .tab-content .tab-content-body .desk .desk-number{display:inline-block;position:absolute;border:1px solid #d0dfe9;width:25px;height:25px;line-height:1;top:-10px;left:-10px;
+ box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-khtml-box-sizing:border-box;-o-box-sizing:border-box;
+ padding:4px 7px;font-size:16px;font-weight:bold;color:#fff;border-radius:50%;background:#d0dfe9;
+}
+.tab-nav .tab-content .tab-content-body .desk .desk-name{border-bottom:1px solid #d0dfe9;padding:7px 15px;font-size:13px;color:#777777}
+.tab-nav .tab-content .tab-content-body .desk .user-div{padding:10px;}
+.tab-nav .tab-content .tab-content-body .desk .user-div .user{float:left;margin:0px 15px 7px 0;border:3px solid #d0dfe9;width:50px;height:50px;;
+  border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%;-khtml-border-radius:50%;-o-border-radius:50%;overflow:hidden;
+}
+.tab-nav .tab-content .tab-content-body .desk .user-div .user:nth-child(3n){margin-right:0;}
+.tab-nav .tab-content .tab-content-body .desk .user-div .user img{display:block;
+}
+.tab-nav .tab-content .tab-content-body .desk .text-link{position:absolute;right:10px;bottom:10px;}
+.tab-nav .tab-content .tab-content-body .desk .icon-more{margin-top:38px;}
+.tab-nav .tab-content .tab-content-body .desk .icon-more.hide{display:none;}
+.tab-nav .tab-content .tab-content-body .desk .text{color:#99a2a8;font-style:italic;font-size:13px;margin:80px 5px 0}
+.tab-nav .tab-content ol.workflows{font-weight:bold;font-size:16px;padding-left:0;}
+.tab-nav .tab-content ol.workflows li{}
+.tab-nav .tab-content .description{border-top:1px solid #cae6ff;}
+.tab-nav .tab-content .heading{color:#999;text-decoration:none;font-weight:bold;font-size:18px}
+
+/* Desk Users */
+.betaout .desk-users{}
+.betaout .desk-users .user{float:left;text-align:center;margin-right:20px;margin-bottom:20px;}
+.betaout .desk-users .user .desk-user{display:inline-block;border:3px solid #d0dfe9;width:50px;height:50px;
+  border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%;-khtml-border-radius:50%;-o-border-radius:50%;overflow:hidden;
+}
+.betaout .desk-users .user .desk-username{line-height:1.2;display:inline-block;margin-top:5px;}
+
+/* User Roles */
+.singleUserRole{padding:5px 20px;}
+
+/* noDataFound */
+.noDataFound{background:#fffbcc;border:1px solid #e6db55;display:inline-block;padding:7px 20px;margin-top:45%;margin-left:30px;
+	border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;-o-border-radius:5px;font-size:14px;
+}
+
+/* templates active inactive */
+.left-panel-nav .statusCol{width:14px;}
+
+
