@@ -9,7 +9,7 @@ if (isset($_POST['betaoutSubmit'])) {
         $wordpressVersion = isset($_POST['wordpressVersion']) ? trim($_POST['wordpressVersion']) : '';
         $wordpressBoPluginUrl = isset($_POST['wordpressBoPluginUrl']) ? trim($_POST['wordpressBoPluginUrl']) : '';
 
-        $curlResponse = Persona_UserDataManagement::validateWordpressSite($betaoutApiKey, $betaoutApiSecret, $wordpressVersion, $wordpressBoPluginUrl);
+        $curlResponse = SocialAxis_UserDataManagement::validateWordpressSite($betaoutApiKey, $betaoutApiSecret, $wordpressVersion, $wordpressBoPluginUrl);
 
         if (isset($curlResponse['responseCode']) && $curlResponse['responseCode'] == 200) {
             $clientAccountName = $curlResponse['clientAccountName'];
