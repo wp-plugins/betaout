@@ -80,14 +80,15 @@ class WpPull{
 		
 		$wpPost['post_author'] = $wpUserId;
 		
-		$wpImages = $wpPost[ 'wpImages' ];
+		$boAssets = $wpPost[ 'boAssets' ];
+		$boAssetsPostData = $wpPost[ 'boAssetsPostData' ];
 		
 		$templateId = $wpPost[ 'templateId' ];
 		$templateType = $wpPost[ 'templateType' ];
 		$storyfolderId = $wpPost[ 'storyfolderId' ];
 		$featureImage = $wpPost[ 'featureImage' ];
 		
-		unset( $wpPost[ 'wpImages' ], $wpPost[ 'templateId' ], $wpPost[ 'templateType' ], $wpPost[ 'storyfolderId' ], $wpPost[ 'featureImage' ] );
+		unset( $wpPost[ 'boAssets' ], $wpPost[ 'boAssetsPostData' ], $wpPost[ 'templateId' ], $wpPost[ 'templateType' ], $wpPost[ 'storyfolderId' ], $wpPost[ 'featureImage' ] );
 		
 		kses_remove_filters();
 		
@@ -102,7 +103,7 @@ class WpPull{
 		
 		if( $post_id )
 		{
-			update_post_meta( $post_id, 'bo_galleries', serialize( $wpImages ) );
+			update_post_meta( $post_id, 'bo_assets', serialize( $boAssets ) );
 			
 			update_post_meta( $post_id, 'templateId', $templateId );
 			update_post_meta( $post_id, 'templateType', $templateType );
@@ -123,6 +124,16 @@ class WpPull{
 			if( $templateType == 'structured' ){
 				self::saveStructuredData( $post_id, $structuredPostData );
 			}
+			
+			$assetsWpId = array();
+			foreach( $boAssetsPostData as $assetId => $boAssetPostData ){
+				$asset_post_id = wp_insert_post( $boAssetPostData, $wp_error );
+				if( $asset_post_id ){
+					update_post_meta( $asset_post_id, 'bo_asset', serialize( $boAssetPostData['boAsset'] ) );
+					
+					$assetsWpId[ $assetId ] = $asset_post_id;
+				}
+			}
 		
 			clean_post_cache( $post_id );
 			$getPost = get_post( $post_id );
@@ -130,12 +141,12 @@ class WpPull{
 			
 			$data = array(
 					'wpId' => $post_id,
+					'assetsWpId' => $assetsWpId,
 					'storySlug' => $getPost->post_name,
 					'categories' => $categories,
 					'storyPermalink' => get_permalink( $post_id ),
 					'wpversion' => $version,
 					'wpUserId' => $wpUserId
-					
 			);
 		}
 		return $data;
@@ -170,11 +181,27 @@ class WpPull{
 	}
 }
 
+function codex_custom_init() {
+	$args = array( 'public' => true, 'label' => 'Rich Files' , 'has_archive'=>true );
+	register_post_type( 'richfiles', $args );
+
+	$luxurycarsargs = array( 'public' => true, 'label' => 'Luxury Cars' , 'has_archive'=>true );
+	register_post_type( 'luxurycars', $luxurycarsargs );
+	
+	$luxurycarsargs = array( 'public' => true, 'label' => 'Gallery' , 'has_archive'=>true );
+	register_post_type( 'gallery', $luxurycarsargs );
+	
+	$luxurycarsargs = array( 'public' => true, 'label' => 'Slideshow' , 'has_archive'=>true );
+	register_post_type( 'slideshow', $luxurycarsargs );
+}
+add_action( 'init', 'codex_custom_init' );
+
+
 // get all the active groups as a key value pairs
 function get_post_groups( $post_id = 0, $group_type = '' ){
 	$post_id = $post_id == 0 || $post_id == '' ? get_the_ID() : $post_id;
 	
-	$group_types = get_post_group_types();
+	$group_types = get_post_group_types( $post_id );
 	
 	$arr_group_types = array();
 	if( is_array( $group_type ) ){
@@ -356,4 +383,3 @@ function the_post_group_types(){
 	}
 	echo "</ul>";
 }
-
