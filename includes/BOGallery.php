@@ -15,7 +15,7 @@
 		private static $postGalleries = array();
 		public static function processGallery( $content ) {
 			global $post;
-			self::$postGalleries = @unserialize( get_post_meta( $post->ID, 'bo_galleries', true ) );
+			self::$postGalleries = @unserialize( get_post_meta( $post->ID, 'bo_assets', true ) );
 
 			if( !is_array( self::$postGalleries ) || count( self::$postGalleries ) == 0 ) {
 				return $content;
@@ -42,7 +42,7 @@
 
 		private static function getGalleryHtml( $galleryId ) {
 			$galleryImages = array();
-			$images = self::$postGalleries[ $galleryId ];
+			$images = self::$postGalleries[ $galleryId ]['elements'];
 			foreach( $images as $image ) {
 				$galleryImages[] = array(
 					'url' => $image[ 'view' ],
