@@ -181,22 +181,6 @@ class WpPull{
 	}
 }
 
-function codex_custom_init() {
-	$args = array( 'public' => true, 'label' => 'Rich Files' , 'has_archive'=>true );
-	register_post_type( 'richfiles', $args );
-
-	$luxurycarsargs = array( 'public' => true, 'label' => 'Luxury Cars' , 'has_archive'=>true );
-	register_post_type( 'luxurycars', $luxurycarsargs );
-	
-	$luxurycarsargs = array( 'public' => true, 'label' => 'Gallery' , 'has_archive'=>true );
-	register_post_type( 'gallery', $luxurycarsargs );
-	
-	$luxurycarsargs = array( 'public' => true, 'label' => 'Slideshow' , 'has_archive'=>true );
-	register_post_type( 'slideshow', $luxurycarsargs );
-}
-add_action( 'init', 'codex_custom_init' );
-
-
 // get all the active groups as a key value pairs
 function get_post_groups( $post_id = 0, $group_type = '' ){
 	$post_id = $post_id == 0 || $post_id == '' ? get_the_ID() : $post_id;
