@@ -7,6 +7,8 @@ class WpPull{
 		
 		$lastCategoryId = -1;
 		$lastWpCategoryId = -1;
+		
+		$wpCategories = is_array($wpCategories) ? $wpCategories : array();
 		foreach( $wpCategories as $categoryId => $wpCategory ) {
 			if ( !get_category( $wpCategory['cat_ID'] ) )
 				$wpCategory['cat_ID'] = 0;
@@ -43,7 +45,7 @@ class WpPull{
 	}
 	
 	// move post
-	public static function moveBoPost( $wpPost, $structuredPostData ) {
+	public static function moveBoPost( $wpPost, $structuredPostData, $templateData ) {
 		$personaUserId = $wpPost['post_author'];
 		$wpUserId = 0;
 		
@@ -80,7 +82,6 @@ class WpPull{
 		
 		$wpPost['post_author'] = $wpUserId;
 		
-		$boAssets = $wpPost[ 'boAssets' ];
 		$boAssetsPostData = $wpPost[ 'boAssetsPostData' ];
 		
 		$templateId = $wpPost[ 'templateId' ];
@@ -88,7 +89,7 @@ class WpPull{
 		$storyfolderId = $wpPost[ 'storyfolderId' ];
 		$featureImage = $wpPost[ 'featureImage' ];
 		
-		unset( $wpPost[ 'boAssets' ], $wpPost[ 'boAssetsPostData' ], $wpPost[ 'templateId' ], $wpPost[ 'templateType' ], $wpPost[ 'storyfolderId' ], $wpPost[ 'featureImage' ] );
+		unset( $wpPost[ 'boAssetsPostData' ], $wpPost[ 'templateId' ], $wpPost[ 'templateType' ], $wpPost[ 'storyfolderId' ], $wpPost[ 'featureImage' ] );
 		
 		kses_remove_filters();
 		
@@ -103,8 +104,6 @@ class WpPull{
 		
 		if( $post_id )
 		{
-			update_post_meta( $post_id, 'bo_assets', serialize( $boAssets ) );
-			
 			update_post_meta( $post_id, 'templateId', $templateId );
 			update_post_meta( $post_id, 'templateType', $templateType );
 			update_post_meta( $post_id, 'storyfolderId', $storyfolderId );
@@ -126,12 +125,34 @@ class WpPull{
 			}
 			
 			$assetsWpId = array();
+			$boAssetsPostData = is_array($boAssetsPostData)	? $boAssetsPostData : array();
 			foreach( $boAssetsPostData as $assetId => $boAssetPostData ){
+				$boAssetPostData['post_author'] = $wpUserId;
 				$asset_post_id = wp_insert_post( $boAssetPostData, $wp_error );
 				if( $asset_post_id ){
-					update_post_meta( $asset_post_id, 'bo_asset', serialize( $boAssetPostData['boAsset'] ) );
+					update_post_meta( $asset_post_id, 'bo_asset', $boAssetPostData['boAsset'] );
 					
-					$assetsWpId[ $assetId ] = $asset_post_id;
+					clean_post_cache( $asset_post_id );
+					$getPostAsset = get_post( $asset_post_id );
+					
+					$assetsWpId[ $assetId ] = array( 'wpId' => $asset_post_id, 'slug' => $getPostAsset->post_name );
+				}
+			}
+			
+			update_post_meta( $post_id, 'bo_assets', $assetsWpId );
+			
+			$groupsWpId = array();
+			$templateData = is_array($templateData)	? $templateData : array();
+			if( count($templateData) > 0 ){
+				$templateNames = $templateData[ 'templateNames' ];
+				update_option( 'templateNames', $templateNames );
+				unset( $templateData[ 'templateNames' ] );
+				
+				foreach( $templateData as $templateGroupId => $templateGroupStory ){
+					$group_post_id = wp_insert_post( $templateGroupStory, $wp_error );
+					if( $group_post_id ){
+						$groupsWpId[ $templateGroupId ] = $group_post_id;
+					}
 				}
 			}
 		
@@ -142,6 +163,7 @@ class WpPull{
 			$data = array(
 					'wpId' => $post_id,
 					'assetsWpId' => $assetsWpId,
+					'groupsWpId' => $groupsWpId,
 					'storySlug' => $getPost->post_name,
 					'categories' => $categories,
 					'storyPermalink' => get_permalink( $post_id ),
@@ -180,6 +202,16 @@ class WpPull{
 		}
 	}
 }
+
+function custom_post_type_init(){
+	$templateNames = get_option( 'templateNames' );
+	$templateNames = is_array($templateNames) ? $templateNames : array();
+	foreach( $templateNames as $templateName ){
+		$args = array( 'public' => true, 'label' => $templateName['label'], 'has_archive'=> true, 'show_ui' => $templateName['show_ui'] > 0 );
+		$error = register_post_type( $templateName['post_type'], $args );
+	}
+}
+add_action( 'init', 'custom_post_type_init' );
 
 // get all the active groups as a key value pairs
 function get_post_groups( $post_id = 0, $group_type = '' ){
@@ -264,6 +296,26 @@ function get_post_group_types( $post_id = 0 ){
 		}
 	}
 	return $group_types;
+}
+
+// get all active gorups slug with name
+function get_post_group_types_slug( $post_id = 0 ){
+	$post_id = $post_id == 0 ? get_the_ID() : $post_id;
+
+	$group_types_slug = array();
+
+	$groups = get_post_meta( $post_id, 'Groups_Types' , true);
+	$groupsSlug = get_post_meta( $post_id, 'Groups_Types_Slug' , true);
+	
+	if( $groups != '' && $groupsSlug != '' ){
+		$arrGroups = explode( "||", $groups );
+		$arrGroupsSlug = explode( "||", $groupsSlug );
+		
+		foreach( $arrGroups as $key => $value ){
+			$group_types_slug[ $arrGroupsSlug[ $key ] ] = $value;
+		}
+	}
+	return $group_types_slug;
 }
 
 // get all the active groups html

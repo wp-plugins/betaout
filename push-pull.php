@@ -43,7 +43,8 @@ if( $pluginActiveStatus ){
 		case 'post' :{
 			$wpPost = $postArray['wpPost'];
 			$structuredPostData = $postArray['structuredPostData'];
-			$data = WpPull::moveBoPost( $wpPost, $structuredPostData );
+			$templateData = $postArray['templateData'];
+			$data = WpPull::moveBoPost( $wpPost, $structuredPostData, $templateData );
 			break;
 		} 
 		case 'delete-post' :{
