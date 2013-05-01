@@ -97,6 +97,8 @@ class WpPull{
 		{
 			$wpPost[ 'ID' ] = 0;
 		}
+		
+		$wpPost[ 'post_date' ] = gmdate( 'Y-m-d H:i:s', ( strtotime( $wpPost[ 'post_date_gmt' ] ) + ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) ) );
 
 		$post_id = wp_insert_post( $wpPost, $wp_error );
 		
@@ -127,7 +129,9 @@ class WpPull{
 			$assetsWpId = array();
 			$boAssetsPostData = is_array($boAssetsPostData)	? $boAssetsPostData : array();
 			foreach( $boAssetsPostData as $assetId => $boAssetPostData ){
-				$boAssetPostData['post_author'] = $wpUserId;
+				$boAssetPostData[ 'post_author' ] = $wpUserId;
+				$boAssetPostData[ 'post_date' ] = gmdate( 'Y-m-d H:i:s', ( strtotime( $boAssetPostData[ 'post_date_gmt' ] ) + ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) ) );
+				
 				$asset_post_id = wp_insert_post( $boAssetPostData, $wp_error );
 				if( $asset_post_id ){
 					update_post_meta( $asset_post_id, 'bo_asset', $boAssetPostData['boAsset'] );
