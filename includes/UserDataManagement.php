@@ -17,6 +17,9 @@ class SocialAxis_UserDataManagement {
             $i = 0;
             $userDataArray = array();
             foreach ($users as $val) {
+                 $wp_user = new WP_User($val->ID);
+                 if (in_array( 'subscriber', $wp_user->roles ) )
+                         continue;
                 $userDataArray[$i]['wordpressUserId'] = $val->ID;
                 $userDataArray[$i]['login'] = $val->user_login;
                 $userDataArray[$i]['email'] = $val->user_email;
