@@ -44,6 +44,10 @@ class WpPull{
 		$result = wp_delete_category( $wpCategoryId );
 	}
 	
+	public static function saveTempateStructure( $templateStructureData ) {
+		update_option( 'templateStructureData', $templateStructureData );
+	}
+	
 	// move post
 	public static function moveBoPost( $wpPost, $structuredPostData, $templateData ) {
 		$personaUserId = $wpPost['post_author'];

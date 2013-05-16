@@ -40,6 +40,11 @@ if( $pluginActiveStatus ){
 			$data = WpPull::moveBoCategory( $wpCategories );
 			break;
 		}
+		case 'templateData' :{
+			$templateStructureData = $postArray['templateStructureData'];
+			$data = WpPull::saveTempateStructure( $templateStructureData );
+			break;
+		}
 		case 'post' :{
 			$wpPost = $postArray['wpPost'];
 			$structuredPostData = $postArray['structuredPostData'];
