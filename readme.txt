@@ -5,7 +5,7 @@ Requires at least: 3.1
 Tested up to: 3.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 0.1.7
+Stable tag: 0.2
 
 Manage all your Wordpress sites and Editorial team from a single interface
 
@@ -51,6 +51,16 @@ You can email us all your queries at support@betaout.com.
 
 == Changelog ==
 
+=0.2 =
+* Editorial Calendat Syncing
+* Responsive Design
+* 2 User roles
+* Team Profiles
+* Dashboard
+* Felxible Assignment Template
+* Multisite Support
+
+
 = 0.1 =
 * Syncing of users
 * Workflows
@@ -61,11 +71,4 @@ You can email us all your queries at support@betaout.com.
 * Dashboard
 
 
- 0.2 =
-* Editorial Calendat Syncing
-* Responsive Design
-* 2 User roles
-* Team Profiles
-* Dashboard
-* Felxible Assignment Template
-
+ 
