@@ -51,7 +51,7 @@ You can email us all your queries at support@betaout.com.
 
 == Changelog ==
 
-=0.2 =
+= 0.2 =
 * Editorial Calendat Syncing
 * Responsive Design
 * 2 User roles
