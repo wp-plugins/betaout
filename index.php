@@ -62,7 +62,7 @@ class BetaoutConnect{
       add_action('create_category', array('ContentCloud','pushCategory' ));
      add_action('edit_category', array('ContentCloud','pushCategory' ));
      add_action('delete_category', array('ContentCloud','deleteCategory'));
-      add_action( 'wp_head', array( $this, 'head' ), 1 );
+      add_action( 'wp_head', array('BetaoutConnect', 'head' ), 1 );
        
      }
      
