@@ -32,12 +32,12 @@ If the automatic process above fails, follow these simple steps to do a manual i
 
 == Screenshots ==
 
-1. **Newsroom Dashboard** - Get a bird eye-view of all your Wordpress sites from a single interface.
-2. **Team Activity** - An activity stream of all the activity happening in your newsroom.
-3. **Team Profile** - Powerful team member profile to give all relevant information on a single page.
-4. **Asset Uploader** - Upload multiple images, videos to your story with ease.
-5. **User Profile** - Give your users including team members, site subscribers etc a personal dashboard, to monitor their progress, badges, rewards across your network.
-
+1. **EDITOR's DASHBOARD** -The dashboard that gets you in control of every single story being worked on by your editorial team.
+2. **My Tasks** - Keep track of what you need to do. Now and Later.
+3. **Editorial Calendar** - Plan your content startegy visually.
+4. **Idearoom** - Brainstrom ideas with you team before converting them is assignment.
+5. **Rich Text Editor** - Text editor made for collaboration.
+6. **User Insights** -A single page to give real-time insights for every team members.
 == Frequently Asked Questions ==
 
 = Where is the User Manual? =
