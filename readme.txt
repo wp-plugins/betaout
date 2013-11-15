@@ -17,7 +17,10 @@ Its plug-n-play architecture gives you the flexibility to take out the Betaout p
 
 For more info, please go to our website - http://www.betaout.com
 
- Fully Functional Demo - http://www.betaout.com/demo/
+ Fully Functional Demo - You can use following Account Details for playing with the demo 
+   URL:http://www.contentcloud.to
+   Editor email: michael@betaout.com
+   pswd: 123456
 
 [youtube http://www.youtube.com/watch?v=mjefntPxkS8]
 == Installation ==
