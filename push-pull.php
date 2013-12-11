@@ -1,6 +1,6 @@
 <?php
 // Insert the post into the database
-ini_set("display_errors",1);
+//ini_set("display_errors",1);
 $postArray = $_POST;
 
 $current_path = dirname(__FILE__);
