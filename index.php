@@ -138,12 +138,12 @@ function verify_betaoutkey_callback() {
            }
 	die(); // this is required to return a proper result
 }
- function pluginDeactivate(){
+ function BetaoutPluginDeactivate(){
       
         $curlResponse=ContentCloud::cc_plugin_deactivated();
     }
 
     
-register_deactivation_hook(__FILE__, 'pluginDeactivate');
+register_deactivation_hook(__FILE__, 'BetaoutPluginDeactivate');
 
 
