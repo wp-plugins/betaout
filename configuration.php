@@ -8,7 +8,7 @@
                 <div id="amplify_api" class="row-fluid">
                     <div class="pull-left well-small" style="position:relative;background-color: #fefe4e;border:1px solid #fedb10;height: 114px;line-height: 25px">
                     <div class="span7" style="font-size: 22px;color: #666;font-weight: 800">
-                        <p>To enable Content Cloud, you need to have an account at <a href="#"> Betaout.com </a> and get your <strong>free</strong> API key and secret for this site</p>
+                        <p>To enable Content Cloud, you need to have an account at <a href="http://www.contentcloudhq.com"> contentcloudhq.com </a> and get your <strong>free</strong> API key and secret for this site</p>
                     </div>
                     <div class="pull-right">
                         <img src="<?php echo plugins_url('/betaout/images/u74_normal.png'); ?>" alt="" title=""/>
