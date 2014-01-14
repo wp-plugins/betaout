@@ -76,12 +76,12 @@ class BetaoutConnect{
 	             if ( !empty( $custom['betaout_metadesc'] ))
 		          $metadesc =maybe_unserialize($custom['betaout_metadesc']);
 	              if ( ! empty( $metadesc ) )
-				echo '<meta name="description" content="' . esc_attr( strip_tags( stripslashes( $metadesc ) ) ) . '"/>' . "\n";
+				echo '<meta name="description" content="' . esc_attr( strip_tags( stripslashes_deep( $metadesc ) ) ) . '"/>' . "\n";
 
                       if ( !empty( $custom['betaout_seotitle'] ))
 		          $metatitle =maybe_unserialize($custom['betaout_seotitle']);
                        if ( ! empty( $metatitle ) )
-				echo '<meta name="title" content="' . esc_attr( strip_tags( stripslashes( $metatitle ) ) ) . '"/>' . "\n";
+				echo '<meta name="title" content="' . esc_attr( strip_tags( stripslashes_deep( $metatitle ) ) ) . '"/>' . "\n";
 
                 }
                }
