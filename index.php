@@ -5,7 +5,7 @@
   Plugin Name: Betaout ContentCloud
   Plugin URI: http://www.betaout.com
   Description: Manage all your Wordpress sites and Editorial team from a single interface
-  Version: 0.3
+  Version: 0.4
   Author: BetaOut (support@betaout.com)
   Author URI: http://www.betaout.com
   License: GPLv2 or later
@@ -62,29 +62,29 @@ class BetaoutConnect{
       add_action('create_category', array('ContentCloud','pushCategory' ));
      add_action('edit_category', array('ContentCloud','pushCategory' ));
      add_action('delete_category', array('ContentCloud','deleteCategory'));
-      add_action( 'wp_head', array('BetaoutConnect', 'head' ), 1 );
+      add_action('wp_head', array('BetaoutConnect', 'betaouthead' ), 1 );
        
      }
      
-       public function head() {
-
+       public function betaouthead() {
+          try{
            if ( is_singular() ) {
                         global $post;
                          if ( isset( $post ) && isset( $post->post_status ) && $post->post_status != 'auto-draft')
 			$postid = $post->ID;
-                         $custom = get_post_custom( $postid );
-	             if ( !empty( $custom['betaout_metadesc'] ))
-		          $metadesc =maybe_unserialize($custom['betaout_metadesc']);
-	              if ( ! empty( $metadesc ) )
-				echo '<meta name="description" content="' . esc_attr( strip_tags( stripslashes_deep( $metadesc ) ) ) . '"/>' . "\n";
+                      $metadesc=get_post_meta($postid,'betaout_metadesc',true);
+                       if ( ! empty($metadesc)){
+				echo '<meta name="description" content="' . esc_attr( strip_tags( $metadesc )  ) . '"/>' . "\n";
+                      }
 
-                      if ( !empty( $custom['betaout_seotitle'] ))
-		          $metatitle =maybe_unserialize($custom['betaout_seotitle']);
-                       if ( ! empty( $metatitle ) )
-				echo '<meta name="title" content="' . esc_attr( strip_tags( stripslashes_deep( $metatitle ) ) ) . '"/>' . "\n";
-
+                      $metatitle=get_post_meta($postid,'betaout_seotitle',true);
+                     if ( ! empty($metatitle)){
+				echo '<meta name="title" content="' . esc_attr( strip_tags( $metatitle) ) . '"/>' . "\n";
+                       }
                 }
-               }
+                }catch(Exception $e){
+          }
+       }
     public function adminStyle(){
         $src = plugins_url('betaout/css/common.css', dirname(__FILE__));
         wp_register_style('commonCss', $src);
