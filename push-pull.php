@@ -1,7 +1,7 @@
 <?php
 // Insert the post into the database
 //ini_set("display_errors",1);
-$postArray = $_POST;
+$postArray = $_REQUEST;
 
 $current_path = dirname(__FILE__);
 $wp_load = $current_path . "/wp-load.php";
