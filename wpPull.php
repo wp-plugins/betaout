@@ -6,8 +6,9 @@ class WpPull {
     public static function moveBoPost($wpPost) {
         $personaUserId = $wpPost['post_author'];
         $email = $wpPost['post_email'];
+       $userName=$wpPost['post_user_name'];
         $wpUserId = 0;
-        $wpUserId = self::getUserIdByEmail($email);
+        $wpUserId = self::getUserIdByEmail($email,$userName);
 
         if ($wpUserId == 0) {
             $wpUserId = 1;
@@ -78,7 +79,7 @@ class WpPull {
         wp_trash_post($wpId);
     }
 
-    public function getUserIdByEmail($email) {
+    public function getUserIdByEmail($email,$authorName) {
         $userEmail = $email;
         $wp_user_obj = get_user_by('email', $userEmail);
         $wp_user_id = $wp_user_obj->ID;
@@ -86,7 +87,7 @@ class WpPull {
             $user_pass = wp_generate_password();
             $user_name = explode('@', $email);
             $user_name = str_replace("_", " ", $user_name[0]);
-            $fname = $user_name;
+            $fname =$authorName;
             $role = get_option('default_role');
             $nameexists = true;
             $index = 0;
