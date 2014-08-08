@@ -2,10 +2,10 @@
 Contributors: Betaout
 Tags: newsroom, workflow, admin ,freelancers, content cloud, editorial calendar, user roles, social, posts, post, editflow, story budget, multiple sites
 Requires at least: 3.1
-Tested up to: 3.7.1
+Tested up to: 3.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 0.3
+Stable tag: 0.4
 
 Manage all your Wordpress sites and Editorial team from a single interface
 
