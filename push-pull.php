@@ -20,17 +20,18 @@ require_once( ABSPATH . 'wp-admin/includes/image.php' );
 require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 include_once 'wpPull.php';
 
-$pluginName = 'betaout/index.php';
-if ( is_multisite() ) {
-    if(is_plugin_active_for_network($pluginName)){
-       $pluginActiveStatus=true;
-    }else{
-        $pluginActiveStatus=false;
-    }
-    
-}else{
-    $pluginActiveStatus = in_array( $pluginName, (array) get_option( 'active_plugins', array() ) );
-}
+$pluginActiveStatus=true;
+//$pluginName = 'betaout/index.php';
+//if ( is_multisite() ) {
+//    if(is_plugin_active_for_network($pluginName)){
+//       $pluginActiveStatus=true;
+//    }else{
+//        $pluginActiveStatus=false;
+//    }
+//
+//}else{
+//    $pluginActiveStatus = in_array( $pluginName, (array) get_option( 'active_plugins', array() ) );
+//}
 
 
 $message = false;

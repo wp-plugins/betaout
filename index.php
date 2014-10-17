@@ -5,7 +5,7 @@
   Plugin Name: Betaout ContentCloud
   Plugin URI: http://www.betaout.com
   Description: Manage all your Wordpress sites and Editorial team from a single interface
-  Version: 1.0
+  Version: 1.0.1
   Author: BetaOut (support@betaout.com)
   Author URI: http://www.betaout.com
   License: GPLv2 or later
