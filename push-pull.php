@@ -46,6 +46,8 @@ if( $pluginActiveStatus ){
 	
 	if( $hash != $postHash ) {
 		$postArray[ 'action' ] = '';
+                $data['newhash']=$hash;
+                $data['message']="hashmismatch";        
 	}
 
 	switch( $postArray[ 'action' ] ) {		
