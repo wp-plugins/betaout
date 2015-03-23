@@ -13,13 +13,13 @@ Manage all your Wordpress sites and Editorial team from a single interface
 
 Content Cloud empowers your newsroom with dynamic workflows, resource sharing, out of the box functionality and easy integration with existing Wordpress infrastructure. Simplify Collaboration within your Editorial Team across multiple Wordpress sites.
 
-Its plug-n-play architecture gives you the flexibility to take out the Betaout platform from your network anytime without disrupting your publishing process.
+Its plug-n-play architecture gives you the flexibility to take out the ContentCloud platform from your network anytime without disrupting your publishing process.
 
-For more info, please go to our website - http://www.betaout.com
+For more info, please go to our website - http://www.contentcloudhq.com
 
  Fully Functional Demo - You can use following Account Details for playing with the demo
 
-   URL: http://www.contentcloud.to
+   URL: http://www.contentcloudhq.com
 
    Editor email: michael@betaout.com
 
@@ -27,13 +27,13 @@ For more info, please go to our website - http://www.betaout.com
 
 == Installation ==
 
-The easiest way to install this plugin is to go to Add New in the Plugins section of your blog admin and search for "Betaout." On the far right side of the search results, click "Install."
+The easiest way to install this plugin is to go to Add New in the Plugins section of your blog admin and search for "ContentCloud." On the far right side of the search results, click "Install."
 
 If the automatic process above fails, follow these simple steps to do a manual install:
 
 1. Extract the contents of the zip file into your '/wp-content/plugins/' directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Get your free API key by registering an account at http://www.betaout.com
+1. Get your free API key by registering an account at http://contentcloudhq.com
 
 == Screenshots ==
 
@@ -47,7 +47,7 @@ If the automatic process above fails, follow these simple steps to do a manual i
 
 = Where is the User Manual? =
 
-Though our interface is very intuitive but we have written a User Manual, just in case. You can access it at http://help.betaout.com
+Though our interface is very intuitive but we have written a User Manual, just in case. You can access it at http://contentcloudhq.com/learn
 
 = I have an query, where do I ask? =
 
@@ -56,8 +56,14 @@ You can email us all your queries at support@betaout.com.
 
 == Changelog ==
 
+= 0.3 =
+* Freelancer Management
+* Payment Section
+* Social Network Publishing and Scheduling
+* Improved Calendar and Dashboard
+
 = 0.2 =
-* Editorial Calendat Syncing
+* Editorial Calendar Syncing
 * Responsive Design
 * 2 User roles
 * Team Profiles
