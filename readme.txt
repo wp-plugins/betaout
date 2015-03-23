@@ -33,7 +33,7 @@ If the automatic process above fails, follow these simple steps to do a manual i
 
 1. Extract the contents of the zip file into your '/wp-content/plugins/' directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Get your free API key by registering an account at http://www.contentcloudhq.com
+1. Get your free API key by registering an account at http://contentcloudhq.com
 
 == Screenshots ==
 
@@ -47,7 +47,7 @@ If the automatic process above fails, follow these simple steps to do a manual i
 
 = Where is the User Manual? =
 
-Though our interface is very intuitive but we have written a User Manual, just in case. You can access it at http://help.betaout.com
+Though our interface is very intuitive but we have written a User Manual, just in case. You can access it at http://contentcloudhq.com/learn
 
 = I have an query, where do I ask? =
 
